@@ -1,0 +1,125 @@
+name:                checkit
+version:             0.1.0.0
+github:              "bergmark/checkit"
+license:             BSD3
+author:              "Adam Bergmark"
+maintainer:          "adam@bergmark.nl"
+copyright:           "2021 Adam Bergmark"
+
+extra-source-files:
+- README.md
+- CHANGELOG.md
+
+description:         Please see the README on GitHub at <https://github.com/githubuser/checkit#readme>
+
+dependencies:
+- QuickCheck
+- aeson
+- aeson-pretty
+- aeson-qq
+- base >= 4.7 && < 5
+- base64-bytestring
+- bytestring
+- casing
+- cookie
+- file-embed
+- generic-arbitrary
+- hashable
+- hasql
+- http-client
+- http-client-tls
+- http-media
+- insert-ordered-containers
+- jose-jwt
+- lens
+- opaleye
+- openapi3
+- quickcheck-instances
+- random
+- regex
+- rel8
+- safe
+- servant
+- servant-client
+- servant-openapi3
+- servant-server
+- sop-core
+- sop-core
+- stm
+- string-conversions
+- tasty
+- tasty-th
+- text
+- time
+- unordered-containers
+- uuid-quasi
+- uuid-types
+- vector
+- wai
+- warp
+- yaml
+
+ghc-options:
+  - -Weverything
+  - -Wno-all-missed-specializations
+  - -Wno-missed-specializations
+  - -Wno-missing-deriving-strategies
+  - -Wno-missing-export-lists
+  - -Wno-missing-import-lists
+  - -Wno-missing-local-signatures
+  - -Wno-missing-safe-haskell-mode
+  - -Wno-monomorphism-restriction
+  - -Wno-name-shadowing
+  - -Wno-prepositive-qualified-module
+  - -Wno-unsafe
+  - -Wno-unused-packages
+
+default-extensions:
+  - DataKinds
+  - DefaultSignatures
+  - DeriveAnyClass
+  - DeriveGeneric
+  - DerivingVia
+  - DerivingStrategies
+  - FlexibleContexts
+  - GeneralizedNewtypeDeriving
+  - KindSignatures
+  - LambdaCase
+  - MultiParamTypeClasses
+  - NamedFieldPuns
+  - NoImplicitPrelude
+  - OverloadedStrings
+  - PolyKinds
+  - RecordWildCards
+  - StandaloneDeriving
+  - TemplateHaskell
+  - TypeApplications
+  - TypeFamilies
+  - TypeOperators
+  - ViewPatterns
+  - ImportQualifiedPost
+
+library:
+  source-dirs: src
+
+executables:
+  checkit-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - checkit
+
+tests:
+  checkit-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - checkit

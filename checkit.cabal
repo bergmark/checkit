@@ -1,0 +1,272 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           checkit
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/checkit#readme>
+homepage:       https://github.com/bergmark/checkit#readme
+bug-reports:    https://github.com/bergmark/checkit/issues
+author:         Adam Bergmark
+maintainer:     adam@bergmark.nl
+copyright:      2021 Adam Bergmark
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/bergmark/checkit
+
+library
+  exposed-modules:
+      Aeson
+      Api
+      Db
+      LocalPrelude
+      ParamName
+      Server
+      Types
+      Types.CreateProject
+      Types.Project
+      Types.ProjectFields
+      Types.ProjectList
+  other-modules:
+      Paths_checkit
+  hs-source-dirs:
+      src
+  default-extensions:
+      DataKinds
+      DefaultSignatures
+      DeriveAnyClass
+      DeriveGeneric
+      DerivingVia
+      DerivingStrategies
+      FlexibleContexts
+      GeneralizedNewtypeDeriving
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      NamedFieldPuns
+      NoImplicitPrelude
+      OverloadedStrings
+      PolyKinds
+      RecordWildCards
+      StandaloneDeriving
+      TemplateHaskell
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      ViewPatterns
+      ImportQualifiedPost
+  ghc-options: -Weverything -Wno-all-missed-specializations -Wno-missed-specializations -Wno-missing-deriving-strategies -Wno-missing-export-lists -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-monomorphism-restriction -Wno-name-shadowing -Wno-prepositive-qualified-module -Wno-unsafe -Wno-unused-packages
+  build-depends:
+      QuickCheck
+    , aeson
+    , aeson-pretty
+    , aeson-qq
+    , base >=4.7 && <5
+    , base64-bytestring
+    , bytestring
+    , casing
+    , cookie
+    , file-embed
+    , generic-arbitrary
+    , hashable
+    , hasql
+    , http-client
+    , http-client-tls
+    , http-media
+    , insert-ordered-containers
+    , jose-jwt
+    , lens
+    , opaleye
+    , openapi3
+    , quickcheck-instances
+    , random
+    , regex
+    , rel8
+    , safe
+    , servant
+    , servant-client
+    , servant-openapi3
+    , servant-server
+    , sop-core
+    , stm
+    , string-conversions
+    , tasty
+    , tasty-th
+    , text
+    , time
+    , unordered-containers
+    , uuid-quasi
+    , uuid-types
+    , vector
+    , wai
+    , warp
+    , yaml
+  default-language: Haskell2010
+
+executable checkit-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_checkit
+  hs-source-dirs:
+      app
+  default-extensions:
+      DataKinds
+      DefaultSignatures
+      DeriveAnyClass
+      DeriveGeneric
+      DerivingVia
+      DerivingStrategies
+      FlexibleContexts
+      GeneralizedNewtypeDeriving
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      NamedFieldPuns
+      NoImplicitPrelude
+      OverloadedStrings
+      PolyKinds
+      RecordWildCards
+      StandaloneDeriving
+      TemplateHaskell
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      ViewPatterns
+      ImportQualifiedPost
+  ghc-options: -Weverything -Wno-all-missed-specializations -Wno-missed-specializations -Wno-missing-deriving-strategies -Wno-missing-export-lists -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-monomorphism-restriction -Wno-name-shadowing -Wno-prepositive-qualified-module -Wno-unsafe -Wno-unused-packages -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , aeson
+    , aeson-pretty
+    , aeson-qq
+    , base >=4.7 && <5
+    , base64-bytestring
+    , bytestring
+    , casing
+    , checkit
+    , cookie
+    , file-embed
+    , generic-arbitrary
+    , hashable
+    , hasql
+    , http-client
+    , http-client-tls
+    , http-media
+    , insert-ordered-containers
+    , jose-jwt
+    , lens
+    , opaleye
+    , openapi3
+    , quickcheck-instances
+    , random
+    , regex
+    , rel8
+    , safe
+    , servant
+    , servant-client
+    , servant-openapi3
+    , servant-server
+    , sop-core
+    , stm
+    , string-conversions
+    , tasty
+    , tasty-th
+    , text
+    , time
+    , unordered-containers
+    , uuid-quasi
+    , uuid-types
+    , vector
+    , wai
+    , warp
+    , yaml
+  default-language: Haskell2010
+
+test-suite checkit-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_checkit
+  hs-source-dirs:
+      test
+  default-extensions:
+      DataKinds
+      DefaultSignatures
+      DeriveAnyClass
+      DeriveGeneric
+      DerivingVia
+      DerivingStrategies
+      FlexibleContexts
+      GeneralizedNewtypeDeriving
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      NamedFieldPuns
+      NoImplicitPrelude
+      OverloadedStrings
+      PolyKinds
+      RecordWildCards
+      StandaloneDeriving
+      TemplateHaskell
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      ViewPatterns
+      ImportQualifiedPost
+  ghc-options: -Weverything -Wno-all-missed-specializations -Wno-missed-specializations -Wno-missing-deriving-strategies -Wno-missing-export-lists -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-monomorphism-restriction -Wno-name-shadowing -Wno-prepositive-qualified-module -Wno-unsafe -Wno-unused-packages -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , aeson
+    , aeson-pretty
+    , aeson-qq
+    , base >=4.7 && <5
+    , base64-bytestring
+    , bytestring
+    , casing
+    , checkit
+    , cookie
+    , file-embed
+    , generic-arbitrary
+    , hashable
+    , hasql
+    , http-client
+    , http-client-tls
+    , http-media
+    , insert-ordered-containers
+    , jose-jwt
+    , lens
+    , opaleye
+    , openapi3
+    , quickcheck-instances
+    , random
+    , regex
+    , rel8
+    , safe
+    , servant
+    , servant-client
+    , servant-openapi3
+    , servant-server
+    , sop-core
+    , stm
+    , string-conversions
+    , tasty
+    , tasty-th
+    , text
+    , time
+    , unordered-containers
+    , uuid-quasi
+    , uuid-types
+    , vector
+    , wai
+    , warp
+    , yaml
+  default-language: Haskell2010

@@ -28,11 +28,11 @@ projectSchema = TableSchema
 projectList :: Query (Project Expr)
 projectList = each projectSchema
 
-projectById :: ProjectId -> Query (Project Expr)
-projectById pid = filter (\p -> id p ==. litExpr pid) =<< each projectSchema
+projectById :: Expr ProjectId -> Query (Project Expr)
+projectById pid = filter (\p -> id p ==. pid) =<< each projectSchema
 
 selectProjectById :: MonadIO m => Connection -> ProjectId -> m (Maybe (Project Result))
-selectProjectById conn = liftIO . fmap listToMaybe . select conn . projectById
+selectProjectById conn = liftIO . fmap listToMaybe . select conn . projectById . litExpr
 
 insertProject :: MonadIO m => Connection -> Project Result -> m Int64
 insertProject conn project = liftIO $ insert conn Insert

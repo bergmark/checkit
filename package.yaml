@@ -26,6 +26,7 @@ dependencies:
 - generic-arbitrary
 - hashable
 - hasql
+- hasql-transaction
 - http-client
 - http-client-tls
 - http-media
@@ -53,6 +54,8 @@ dependencies:
 - time
 - unordered-containers
 - uuid-quasi
+- async
+- mtl
 - uuid-types
 - vector
 - wai
@@ -61,6 +64,7 @@ dependencies:
 
 ghc-options:
   - -Weverything
+
   - -Wno-all-missed-specializations
   - -Wno-missed-specializations
   - -Wno-missing-deriving-strategies
@@ -70,6 +74,7 @@ ghc-options:
   - -Wno-missing-safe-haskell-mode
   - -Wno-monomorphism-restriction
   - -Wno-name-shadowing
+  - -Wno-orphans
   - -Wno-prepositive-qualified-module
   - -Wno-unsafe
   - -Wno-unused-packages
@@ -79,10 +84,13 @@ default-extensions:
   - DefaultSignatures
   - DeriveAnyClass
   - DeriveGeneric
-  - DerivingVia
   - DerivingStrategies
+  - DerivingVia
   - FlexibleContexts
+  - FlexibleInstances
+  - FunctionalDependencies
   - GeneralizedNewtypeDeriving
+  - ImportQualifiedPost
   - KindSignatures
   - LambdaCase
   - MultiParamTypeClasses
@@ -97,26 +105,35 @@ default-extensions:
   - TypeFamilies
   - TypeOperators
   - ViewPatterns
-  - ImportQualifiedPost
 
 library:
   source-dirs: src
 
 executables:
-  checkit-exe:
-    main:                Main.hs
-    source-dirs:         app
+  checkit:
+    main: Main.hs
+    source-dirs: app
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
     - checkit
+#  migrate:
+#    main: Migrate.hs
+#    source-dirs: migrate
+#    ghc-options:
+#    - -threaded
+#    - -rtsopts
+#    - -with-rtsopts=-N
+#    dependencies:
+#    - checkit
+#    - hasql-migration
 
 tests:
   checkit-test:
-    main:                Spec.hs
-    source-dirs:         test
+    main: Spec.hs
+    source-dirs: test
     ghc-options:
     - -threaded
     - -rtsopts

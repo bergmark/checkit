@@ -2,8 +2,6 @@ module ParamName
   ( ParamName(..)
   ) where
 
-import LocalPrelude ()
-
 import Data.Kind
 import GHC.TypeLits
 

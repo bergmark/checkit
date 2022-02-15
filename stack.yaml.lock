@@ -4,11 +4,11 @@
 #   https://docs.haskellstack.org/en/stable/lock_files
 
 snapshots:
-- original: nightly-2021-06-10
+- original: nightly-2021-06-14
   completed:
-    sha256: ef53458d54ca6084c6d8eb5219d03b38878e999af607cf006d5be86669d9a696
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2021/6/10.yaml
-    size: 585361
+    sha256: a5edd4e65bdb6e56760e7d7c1275d2c3b24fb95e730e957e9d60824315e8801d
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2021/6/14.yaml
+    size: 585393
 packages:
 - original:
     hackage: uuid-quasi-0.1.0.1@sha256:232c7bcf08f2254da52ecb2edf069734d9da5a5240b746f0609fb49b502f3909,797
@@ -24,3 +24,10 @@ packages:
       sha256: b79168583232aef7956336ae6d915de8bdf1dceed9b64fd8532444c727144cf4
       size: 8720
     hackage: rel8-1.0.0.0@sha256:323ce9d0263fd70742a6f58905a78ac8511cfa90b528e52e727a0ee35604be0d,4609
+- original:
+    hackage: hasql-migration-0.3.0@sha256:6ca4cc6c89834bb79eb9f15b504774043b5b3994336bd86a9d79e59da6d54963,2799
+  completed:
+    pantry-tree:
+      sha256: 55e3dfca36ffe0d11e1c42bce446e3cc1d5b9a4983e196ec99c650c8b4268845
+      size: 589
+    hackage: hasql-migration-0.3.0@sha256:6ca4cc6c89834bb79eb9f15b504774043b5b3994336bd86a9d79e59da6d54963,2799

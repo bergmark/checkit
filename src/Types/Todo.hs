@@ -1,13 +1,14 @@
 {-# LANGUAGE UndecidableInstances #-}
-module Types.Project where
+module Types.Todo where
 
 import LocalPrelude
 
-import Types.ProjectFields
+import Types.TodoFields
 
-data Project = Project
+data Todo = Todo
   { projectId :: ProjectId
-  , name :: ProjectName
+  , todoId :: TodoId
+  , text :: TodoText
   } deriving stock (Eq, Show, Generic)
     deriving anyclass (FromJSON, ToJSON)
-    deriving HasStatus via WithStatus 200 Project
+    deriving HasStatus via WithStatus 200 Todo

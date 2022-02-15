@@ -2,9 +2,6 @@ module Types.ProjectList where
 
 import LocalPrelude
 
-import Servant.API.UVerb
-
-import Aeson
 import Types.Project
 
 data ProjectList = ProjectList

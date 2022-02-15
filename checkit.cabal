@@ -27,15 +27,28 @@ library
   exposed-modules:
       Aeson
       Api
+      Api.UVerb
+      Client
       Db
+      Db.Project
+      Db.Report
+      Db.Todo
       LocalPrelude
       ParamName
       Server
       Types
       Types.CreateProject
+      Types.CreateReport
+      Types.CreateTodo
+      Types.Error
       Types.Project
       Types.ProjectFields
       Types.ProjectList
+      Types.Report
+      Types.ReportFields
+      Types.Todo
+      Types.TodoFields
+      Types.TodoList
   other-modules:
       Paths_checkit
   hs-source-dirs:
@@ -45,10 +58,13 @@ library
       DefaultSignatures
       DeriveAnyClass
       DeriveGeneric
-      DerivingVia
       DerivingStrategies
+      DerivingVia
       FlexibleContexts
+      FlexibleInstances
+      FunctionalDependencies
       GeneralizedNewtypeDeriving
+      ImportQualifiedPost
       KindSignatures
       LambdaCase
       MultiParamTypeClasses
@@ -63,13 +79,13 @@ library
       TypeFamilies
       TypeOperators
       ViewPatterns
-      ImportQualifiedPost
-  ghc-options: -Weverything -Wno-all-missed-specializations -Wno-missed-specializations -Wno-missing-deriving-strategies -Wno-missing-export-lists -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-monomorphism-restriction -Wno-name-shadowing -Wno-prepositive-qualified-module -Wno-unsafe -Wno-unused-packages
+  ghc-options: -Weverything -Wno-all-missed-specializations -Wno-missed-specializations -Wno-missing-deriving-strategies -Wno-missing-export-lists -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-monomorphism-restriction -Wno-name-shadowing -Wno-orphans -Wno-prepositive-qualified-module -Wno-unsafe -Wno-unused-packages
   build-depends:
       QuickCheck
     , aeson
     , aeson-pretty
     , aeson-qq
+    , async
     , base >=4.7 && <5
     , base64-bytestring
     , bytestring
@@ -79,12 +95,14 @@ library
     , generic-arbitrary
     , hashable
     , hasql
+    , hasql-transaction
     , http-client
     , http-client-tls
     , http-media
     , insert-ordered-containers
     , jose-jwt
     , lens
+    , mtl
     , opaleye
     , openapi3
     , quickcheck-instances
@@ -112,7 +130,7 @@ library
     , yaml
   default-language: Haskell2010
 
-executable checkit-exe
+executable checkit
   main-is: Main.hs
   other-modules:
       Paths_checkit
@@ -123,10 +141,13 @@ executable checkit-exe
       DefaultSignatures
       DeriveAnyClass
       DeriveGeneric
-      DerivingVia
       DerivingStrategies
+      DerivingVia
       FlexibleContexts
+      FlexibleInstances
+      FunctionalDependencies
       GeneralizedNewtypeDeriving
+      ImportQualifiedPost
       KindSignatures
       LambdaCase
       MultiParamTypeClasses
@@ -141,13 +162,13 @@ executable checkit-exe
       TypeFamilies
       TypeOperators
       ViewPatterns
-      ImportQualifiedPost
-  ghc-options: -Weverything -Wno-all-missed-specializations -Wno-missed-specializations -Wno-missing-deriving-strategies -Wno-missing-export-lists -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-monomorphism-restriction -Wno-name-shadowing -Wno-prepositive-qualified-module -Wno-unsafe -Wno-unused-packages -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Weverything -Wno-all-missed-specializations -Wno-missed-specializations -Wno-missing-deriving-strategies -Wno-missing-export-lists -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-monomorphism-restriction -Wno-name-shadowing -Wno-orphans -Wno-prepositive-qualified-module -Wno-unsafe -Wno-unused-packages -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       QuickCheck
     , aeson
     , aeson-pretty
     , aeson-qq
+    , async
     , base >=4.7 && <5
     , base64-bytestring
     , bytestring
@@ -158,12 +179,14 @@ executable checkit-exe
     , generic-arbitrary
     , hashable
     , hasql
+    , hasql-transaction
     , http-client
     , http-client-tls
     , http-media
     , insert-ordered-containers
     , jose-jwt
     , lens
+    , mtl
     , opaleye
     , openapi3
     , quickcheck-instances
@@ -203,10 +226,13 @@ test-suite checkit-test
       DefaultSignatures
       DeriveAnyClass
       DeriveGeneric
-      DerivingVia
       DerivingStrategies
+      DerivingVia
       FlexibleContexts
+      FlexibleInstances
+      FunctionalDependencies
       GeneralizedNewtypeDeriving
+      ImportQualifiedPost
       KindSignatures
       LambdaCase
       MultiParamTypeClasses
@@ -221,13 +247,13 @@ test-suite checkit-test
       TypeFamilies
       TypeOperators
       ViewPatterns
-      ImportQualifiedPost
-  ghc-options: -Weverything -Wno-all-missed-specializations -Wno-missed-specializations -Wno-missing-deriving-strategies -Wno-missing-export-lists -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-monomorphism-restriction -Wno-name-shadowing -Wno-prepositive-qualified-module -Wno-unsafe -Wno-unused-packages -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Weverything -Wno-all-missed-specializations -Wno-missed-specializations -Wno-missing-deriving-strategies -Wno-missing-export-lists -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-monomorphism-restriction -Wno-name-shadowing -Wno-orphans -Wno-prepositive-qualified-module -Wno-unsafe -Wno-unused-packages -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       QuickCheck
     , aeson
     , aeson-pretty
     , aeson-qq
+    , async
     , base >=4.7 && <5
     , base64-bytestring
     , bytestring
@@ -238,12 +264,14 @@ test-suite checkit-test
     , generic-arbitrary
     , hashable
     , hasql
+    , hasql-transaction
     , http-client
     , http-client-tls
     , http-media
     , insert-ordered-containers
     , jose-jwt
     , lens
+    , mtl
     , opaleye
     , openapi3
     , quickcheck-instances

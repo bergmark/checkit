@@ -1,6 +1,7 @@
-resolver: nightly-2021-06-10
+resolver: nightly-2021-06-14
 packages:
 - .
 extra-deps:
 - uuid-quasi-0.1.0.1@sha256:232c7bcf08f2254da52ecb2edf069734d9da5a5240b746f0609fb49b502f3909,797
 - rel8-1.0.0.0@sha256:323ce9d0263fd70742a6f58905a78ac8511cfa90b528e52e727a0ee35604be0d,4609
+- hasql-migration-0.3.0@sha256:6ca4cc6c89834bb79eb9f15b504774043b5b3994336bd86a9d79e59da6d54963,2799
